@@ -14,10 +14,12 @@ const argv = yargs
   .alias('help', 'h')
   .argv;
 
+let encodedAddress = encodeURIComponent(argv.address);
+
 // arg1: options object, configs
 // arg2: callback. will be called when data comes back from the http endpoint
 request({
-  url: 'https://maps.googleapis.com/maps/api/geocode/json?address=rua%20dom%20fernando%20109%20londrina',
+  url: `https://maps.googleapis.com/maps/api/geocode/json?address=${encodedAddress}`,
   json: true,
 }, (error, response, body) => {
   let result = body.results[0];
