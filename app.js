@@ -1,4 +1,18 @@
 const request = require('request');
+const yargs = require('yargs');
+
+const argv = yargs
+  .options({
+    address: {
+      demand: true,
+      alias: 'a',
+      describre: 'Address to fetch weather for',
+      string: true // always parse command as string
+    }
+  })
+  .help()
+  .alias('help', 'h')
+  .argv;
 
 // arg1: options object, configs
 // arg2: callback. will be called when data comes back from the http endpoint
